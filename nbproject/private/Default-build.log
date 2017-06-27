@@ -1,0 +1,15 @@
+gcc -Wall -g -c main.c -o main.o
+main.c:50:8: warning: unused variable 'physmem' [-Wunused-variable]
+        char *physmem = page_table_get_physmem(pt);
+              ^
+1 warning generated.
+gcc -Wall -g -c page_table.c -o page_table.o
+In file included from page_table.c:17:
+/usr/include/ucontext.h:43:2: error: The deprecated ucontext routines require _XOPEN_SOURCE to be defined
+#error The deprecated ucontext routines require _XOPEN_SOURCE to be defined
+ ^
+page_table.c:126:2: warning: implicit declaration of function 'remap_file_pages' is invalid in C99 [-Wimplicit-function-declaration]
+        remap_file_pages(pt->virtmem+page*PAGE_SIZE,PAGE_SIZE,0,frame,0);
+        ^
+1 warning and 1 error generated.
+make: *** [page_table.o] Error 1
