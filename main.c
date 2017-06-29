@@ -41,7 +41,7 @@ void page_fault_handler( struct page_table *pt, int page )
          *         load disk to the frame        
          *      }
          * 
-         * second: if() 
+         * second: if(ควย) 
          */
 }
 
