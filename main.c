@@ -17,9 +17,32 @@ how to use the page table and disk interfaces.
 
 void page_fault_handler( struct page_table *pt, int page )
 {
+        time_t t;
+   
+        /* Intializes random number generator */
+        srand((unsigned) time(&t));
+        
+        
 	printf("page fault on page #%d\n",page);
-        printf("%d",page_table_get_nframes(pt));
+        int FreeFrame = page_table_get_nframes(pt);
+        printf("%d\n",page_table_get_nframes(pt));
+        printf("%d\n", rand() % 10);
+        page_table_set_entry(pt,page,4,PROT_WRITE);
+        page_table_print(pt);
+        int frame = 0;
+        int bits = 0;
+        page_table_get_entry(pt,0,&frame,&bits);
+        printf("%d %d\n",frame,bits);
 	exit(1);
+        
+        /*
+         * first: if(bits equalt to 0 invalid && frame not full){
+         *         page table set entry (set page map to frame
+         *         load disk to the frame        
+         *      }
+         * 
+         * second: if() 
+         */
 }
 
 int main( int argc, char *argv[] )
