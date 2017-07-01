@@ -36,12 +36,19 @@ void page_fault_handler( struct page_table *pt, int page )
 	exit(1);
         
         /*
-         * first: if(bits equalt to 0 invalid && frame not full){
-         *         page table set entry (set page map to frame
-         *         load disk to the frame        
+         * The array of frame fr[]
+         * 
+         * first: if(bits equalt to 0 invalid){  
+         * 
+         *          if(the frame is full){
+         *                page table set entry (set page map to frame
+         *                load disk to the frame
+         *          }else if(the frame is not full){
+         *                 
+         *          }      
          *      }
          * 
-         * second: if(ควย) 
+         * second: if() 
          */
 }
 
