@@ -41,14 +41,26 @@ void page_fault_handler( struct page_table *pt, int page )
          * first: if(bits equalt to 0 invalid){  
          * 
          *          if(the frame is full){
-         *                page table set entry (set page map to frame
-         *                load disk to the frame
+         *              randomly pick the page to remove
+         *              if(page dirty){
+         *                  write it back to the disk
+         *                  write the selecting bit on it place
+         *                  mark the removed page to invalid bit
+         *              }else if(page not dirty){
+         *                  write the selecting bit on it place
+         *                  mark the removed page to invalid bit
+         *              }
+         *                
+         *               
          *          }else if(the frame is not full){
-         *                 
+         *                page table set entry set page map to frame
+         *                load disk to the frame 
          *          }      
          *      }
          * 
-         * second: if() 
+         * second: if(bits not equal to 0){
+         *              set it to prot write and put to the corresponding page      
+         *         } 
          */
 }
 
